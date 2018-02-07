@@ -1,24 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KnT-bR-qIt">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="c3Y-uF-epL">
+            <objects>
+                <navigationController id="KnT-bR-qIt" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hg8-ob-pG1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bGc-BI-NUK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wMX-ud-P2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439" y="39"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="streetViewIos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-iy-xXN" customClass="GMSPanoramaView">
+                                <rect key="frame" x="10" y="74" width="355" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="open" translatesAutoresizingMaskIntoConstraints="NO" id="dZr-IN-Wpc">
+                                        <rect key="frame" x="315" y="160" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="8v6-xe-fsE"/>
+                                            <constraint firstAttribute="width" constant="40" id="zvm-CV-7ou"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="dZr-IN-Wpc" secondAttribute="trailing" id="05i-iY-vZP"/>
+                                    <constraint firstAttribute="bottom" secondItem="dZr-IN-Wpc" secondAttribute="bottom" id="FVK-OD-Wkh"/>
+                                    <constraint firstAttribute="height" constant="200" id="LiU-4u-O2O"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rgc-iy-xXN" secondAttribute="trailing" constant="10" id="Lbo-6c-yrc"/>
+                            <constraint firstItem="Rgc-iy-xXN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="RXL-mG-B9H"/>
+                            <constraint firstItem="Rgc-iy-xXN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="rbu-EH-DqS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="I9Q-Qy-bRh"/>
+                    <connections>
+                        <outlet property="openImg" destination="dZr-IN-Wpc" id="da8-i7-JAL"/>
+                        <outlet property="panoramaView" destination="Rgc-iy-xXN" id="1do-xx-SlQ"/>
+                        <segue destination="cca-s8-KKQ" kind="show" identifier="toBigMap" id="T4L-9H-2QQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="407" y="40"/>
+        </scene>
+        <!--Big Map View Controller-->
+        <scene sceneID="XIi-eS-TkV">
+            <objects>
+                <viewController id="cca-s8-KKQ" customClass="BigMapViewController" customModule="streetViewIos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uv5-7h-3fI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPb-Ks-wsr" customClass="GMSPanoramaView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pPb-Ks-wsr" firstAttribute="leading" secondItem="szg-MQ-svy" secondAttribute="leading" id="PT3-gu-uYE"/>
+                            <constraint firstItem="pPb-Ks-wsr" firstAttribute="trailing" secondItem="szg-MQ-svy" secondAttribute="trailing" id="gsv-w5-dD3"/>
+                            <constraint firstItem="pPb-Ks-wsr" firstAttribute="top" secondItem="Uv5-7h-3fI" secondAttribute="top" id="u0t-SO-Yog"/>
+                            <constraint firstItem="pPb-Ks-wsr" firstAttribute="bottom" secondItem="szg-MQ-svy" secondAttribute="bottom" id="xww-Cy-YVr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="szg-MQ-svy"/>
+                    </view>
+                    <connections>
+                        <outlet property="panoView" destination="pPb-Ks-wsr" id="hyy-OJ-vB9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="day-Gy-3eu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="40"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="open" width="40" height="40"/>
+    </resources>
 </document>
